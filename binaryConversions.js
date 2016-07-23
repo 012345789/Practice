@@ -24,3 +24,20 @@ function convertToBinary(int) {
 }
 
 convertToBinary(15);
+
+function convertToInteger(bin) {
+  var binArr = bin.toString().split("");
+  var result = 0;
+  var powerOfTwo = 1;
+  while (binArr.length != 0) {
+    var dec = binArr.pop();
+    if (dec === "1") {
+      result += powerOfTwo;
+    }
+    powerOfTwo = powerOfTwo * 2;
+  }
+  console.log(result);
+  return result;
+}
+
+convertToInteger(101);
