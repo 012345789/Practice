@@ -29,10 +29,27 @@ function Node(data, left, right) {
   node.right = right;
 }
 
-var root = new Node(6, new Node(4, new Node(2, new Node(1)), new Node(5)), new Node(9, new Node(8, new Node(7)), new Node(11)));  
+var root = new Node(6, new Node(4, new Node(2, new Node(1)), new Node(5)), new Node(9, new Node(8, new Node(7)), new Node(11)));
 /*				6
 			4		9
 		2	  3   8    11
 	   1 		 7  		*/
 
 console.log("isBst: ", isBst(root));
+
+// 6-28-17
+function isBST2(root) {
+  return isBSTRec(root, Number.MIN_VALUE, Number.MAX_VALUE);
+
+  function isBSTRec(root, lb, ub) {
+    if (root == null) {
+      return true;
+    }
+    return root.data >= lb && root.data <= ub
+      && isBSTRec(root.left, lb, root.data)
+      && isBSTRec(root.right, root.data, ub);
+  }
+}
+
+var root2 = new Node(6, new Node(4, new Node(2, new Node(1)), new Node(5)), new Node(9, new Node(8, new Node(7)), new Node(11)));
+console.log(isBST2(root2))
